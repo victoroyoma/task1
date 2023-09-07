@@ -1,26 +1,25 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000; // Use the provided PORT environment variable or default to 3000
+const port = process.env.PORT || 3000; 
 
-// Middleware to parse JSON request bodies
 app.use(express.json());
 
 app.get('/api', (req, res) => {
   try {
-    const slackName = 'Ogheneyoma Victor'; // Modify with your Slack name
-    const track = 'Backend'; // Modify with your track
+    const slackName = 'Ogheneyoma Victor'; 
+    const track = 'Backend';
 
-    // Get the current day and time in UTC
+    // Getting the current day and time in UTC
     const currentUtcTime = new Date().toISOString();
 
-    // Validate the time within a +/-2 minute window
+    // Validating the time within a +/-2 minute window
     const validatedUtcTime = validateUtcTime(currentUtcTime);
 
-    // Get the GitHub URL of the file being run
-    const githubFileUrl = 'https://github.com/username/repo/blob/main/file_name.ext';
+    //GitHub URL of the file being run
+    const githubFileUrl = 'https://github.com/victoroyoma/task1/main/app.js'; 
 
-    // Get the GitHub URL of the full source code repository
-    const githubRepoUrl = 'https://github.com/username/repo';
+    //GitHub URL of the full source code repository
+    const githubRepoUrl = 'https://github.com/victoroyoma/task1';
 
     const response = {
       slack_name: slackName,
@@ -40,7 +39,7 @@ app.get('/api', (req, res) => {
 
 function validateUtcTime(utcTime) {
   const currentUtcTime = new Date(utcTime);
-  const permissibleWindow = 2 * 60 * 1000; // 2 minutes in milliseconds
+  const permissibleWindow = 2 * 60 * 1000;
   const now = new Date();
 
   const timeDifference = Math.abs(currentUtcTime - now);
@@ -48,7 +47,7 @@ function validateUtcTime(utcTime) {
   if (timeDifference <= permissibleWindow) {
     return currentUtcTime.toISOString();
   } else {
-    // Adjust the time within the permissible window
+    // Adjusting the time within the permissible window
     if (currentUtcTime > now) {
       // UTC time is ahead of the current time
       const adjustedTime = new Date(now.getTime() + permissibleWindow);
