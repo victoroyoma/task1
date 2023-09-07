@@ -1,16 +1,18 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "task1/app.js",
-        "use": "@vercel/node"
+  "version": 2,
+  "builds": [
+    {
+      "src": "task1/app.js", 
+      "use": "@vercel/node",
+      "config": {
+        "output": "public" 
       }
-    ],
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "task1/api/$1"
-      }
-    ]
-  }
-  
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "task1/api/$1"
+    }
+  ]
+}
