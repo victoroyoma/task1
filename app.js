@@ -11,8 +11,7 @@ app.get('/api', (req, res) => {
 
     // Getting the current day and time in UTC
     const currentUtcTime = new Date().toISOString();
-
-    // Validating the time within a +/-2 minute window
+    const formattedUtcTime = currentUtcTime.split('.')[0] + 'Z';
     const validatedUtcTime = validateUtcTime(currentUtcTime);
 
     //GitHub URL of the file being run
@@ -25,6 +24,7 @@ app.get('/api', (req, res) => {
       slack_name: slackName,
       current_day: getCurrentDay(),
       utc_time: validatedUtcTime,
+      utc_time: formattedUtcTime,
       track: track,
       github_file_url: githubFileUrl,
       github_repo_url: githubRepoUrl,
