@@ -16,7 +16,7 @@ app.get('/api', (req, res) => {
     const validatedUtcTime = validateUtcTime(currentUtcTime);
 
     //GitHub URL of the file being run
-    const githubFileUrl = 'https://github.com/victoroyoma/task1/main/app.js'; 
+    const githubFileUrl = 'https://github.com/victoroyoma/task1/app.js'; 
 
     //GitHub URL of the full source code repository
     const githubRepoUrl = 'https://github.com/victoroyoma/task1';
