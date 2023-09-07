@@ -1,0 +1,7 @@
+
+node_modules/
+
+# Ignore editor/IDE files
+.vscode/
+.idea/
+*.code-workspace
